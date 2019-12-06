@@ -1,0 +1,329 @@
+﻿<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>视频通信网络综合态势</title>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/echarts.min.js"></script>
+  <script type="text/javascript" src="js/map.js"></script>
+  <script type="text/javascript" src="js/china.js"></script>
+  <script type="text/javascript" src="js/js.js"></script>
+  <script type="text/javascript" src="js/jquery.limarquee.js"></script>
+  <script type="text/javascript" src="js/jquery.cxselect.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <script src="js/swiper.min.js"></script>
+  <link rel="stylesheet" href="css/comon0.css">
+</head>
+
+<body>
+  <div style="background:#000d4a url(images/bg.jpg) center top;min-width: 120rem; overflow: auto;">
+    <div class="loading">
+      <div class="loadbox">
+        <img src="picture/loading.gif"> 页面加载中... </div>
+    </div>
+    <div class="back"></div>
+    <div class="head">
+      <h1>视频通信网络综合态势</h1>
+      <div class="weather">
+        <span id="showTime"></span>
+      </div>
+    </div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000);//開始运行
+      function time() {
+        clearTimeout(t);//清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours();//获取时
+        var m = dt.getMinutes();//获取分
+        var s = dt.getSeconds();//获取秒
+        document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "日" + h + "时" + m + "分" + s + "秒";
+        t = setTimeout(time, 1000); //设定定时器，循环运行     
+      } 
+    </script>
+    <!-- 顶部文字 -->
+    <ul class="clearfix title-top">
+      <li>设备数</li>
+      <li>信道数</li>
+      <li>路由数</li>
+      <li>平均干线带宽</li>
+      <li>平均误码率</li>
+      <li>平均时延</li>
+    </ul>
+    <div class="mainbox">
+      <ul class="clearfix">
+        <li style="width:30%">
+          <div class="boxall" style="height:47rem">
+            <div class="navboxall left-box">
+              <div class="left-first">
+                <div class="first-title">
+                  视频要素部署结构
+                </div>
+                <div class="first-content">
+                  <!-- 摄像头服务器 -->
+                  <div class="camera-box camera1-box">
+                    <div class="camera-subbox">
+                      <img class="camera-img" src="images/7.png" alt="">
+                      <p class="camera-txt">摄像头服务器</p>
+                    </div>
+                    <hr class="heng-line">
+                  </div>
+                  <!-- 摄像头1 -->
+                  <div class="camera-box camera1-box">
+                    <div class="camera-subbox">
+                      <img class="camera-img" src="images/7.png" alt="">
+                      <p class="camera-txt">摄像头1</p>
+                    </div>
+                    <hr class="heng-line">
+                    <div class="shu-line"></div>
+                  </div>
+                  <!-- 摄像头容器1 -->
+                  <div class="camera-container">
+                    <div class="container-bg">
+                      <div class="camera-subbox camera-pos1">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端1</p>
+                      </div>
+                      <div class="camera-subbox camera-pos2">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端2</p>
+                      </div>
+                    </div>
+                    <p class="txt-tip">tcp</p>
+                  </div>
+                  <!-- 摄像头占位 -->
+                  <div class="camera-hold"></div>
+                  <!-- 摄像头2 -->
+                  <div class="camera-box camera1-box">
+                    <div class="camera-subbox">
+                      <img class="camera-img" src="images/7.png" alt="">
+                      <p class="camera-txt">摄像头2</p>
+                    </div>
+                    <hr class="heng-line">
+                    <div class="shu-line"></div>
+                  </div>
+                  <!-- 摄像头容器2 -->
+                  <div class="camera-container">
+                    <div class="container-bg">
+                      <div class="camera-subbox camera-pos1">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端1</p>
+                      </div>
+                      <div class="camera-subbox camera-pos2">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端2</p>
+                      </div>
+                    </div>
+                    <p class="txt-tip">tcp</p>
+                  </div>
+                  <!-- 摄像头占位 -->
+                  <div class="camera-hold"></div>
+                  <!-- 摄像头3 -->
+                  <div class="camera-box camera1-box">
+                    <div class="camera-subbox">
+                      <img class="camera-img" src="images/7.png" alt="">
+                      <p class="camera-txt">摄像头3</p>
+                      <div class="shu-line shu-line-end"></div>
+                    </div>
+                    <hr class="heng-line">
+                  </div>
+                  <!-- 摄像头容器2 -->
+                  <div class="camera-container">
+                    <div class="container-bg">
+                      <div class="camera-subbox camera-pos1">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端1</p>
+                      </div>
+                      <div class="camera-subbox camera-pos2">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端2</p>
+                      </div>
+                    </div>
+                    <p class="txt-tip">tcp</p>
+                  </div>
+                  <!-- 摄像头占位 -->
+                  <div class="camera-hold"></div>
+                  <!-- 摄像头3 -->
+                  <div class="camera-box camera1-box">
+                    <hr class="heng-line heng-line-end">
+                  </div>
+                  <!-- 摄像头容器2 -->
+                  <div class="camera-container">
+                    <div class="container-bg">
+                      <div class="camera-subbox camera-pos1">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端1</p>
+                      </div>
+                      <div class="camera-subbox camera-pos2">
+                        <img class="camera-img" src="images/7.png" alt="">
+                        <p class="camera-txt">摄像终端2</p>
+                      </div>
+                    </div>
+                    <p class="txt-tip">tcp</p>
+                  </div>
+                </div>
+              </div>
+              <div class="left-second">
+                <div class="first-title" id="changeFirst">
+                  设备接入情况[点击]
+                </div>
+                <div id='second-first' class="second-content">
+                  <ul>
+                    <li>
+                      <p class="txt-tip">正常设备</p>
+                      <div class="second-bg counter">
+                        970
+                      </div>
+                    </li>
+                    <li>
+                      <p class="txt-tip">运行设备</p>
+                      <div class="second-bg counter">
+                        842
+                      </div>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <p class="txt-tip">设备神经网络</p>
+                      <img class="imageb" src="images/2.png" alt="">
+                    </li>
+                    <li>
+                      <p class="txt-tip">设备增效拓扑</p>
+                      <img class="imageb" src="images/3.png" alt="">
+                    </li>
+                    <li>
+                      <p class="txt-tip">设备DNA序列</p>
+                      <img class="imageb" src="images/4.png" alt="">
+                    </li>
+                  </ul>
+                </div>
+                <div id='second-two'>
+                  <img style="margin:1rem 0;" src="images/5.png" alt="">
+                  <div class="navboxall" style="height:12rem" id="echart6"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="width:70%">
+          <ul class="clearfix">
+            <li class="pulll_left" style="width:68%">
+              <div class="boxall" style="height:26rem;margin-right:0.5rem">
+                <!-- <div class="alltitle">帧刷新率65~80</div> -->
+                <div class="navboxall" id="echart1"></div>
+              </div>
+            </li>
+            <li class="pulll_left" style="width:32%">
+              <div class="boxall" style="height:26rem">
+                <div id="part1">
+                  <div class="alltitle">part1</div>
+                  <ul id="part1FirstUl">
+                    <!-- <li class="clearfix part1-li">
+                      <span class="high pulll_left">紧急</span>
+                      <span class="name pulll_left">22</span>
+                      <ul class="clearfix pulll_left">
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block"></li>
+                        <li class="pulll_left proce-block proce-block-opa"></li>
+                      </ul>
+                      <span class="percent pulll_left">90%</span>
+                    </li> -->
+                  </ul>
+                </div>
+                <div id="part2">
+                  <div class="alltitle">part2</div>
+                  <ul id="part2FirstUl">
+                    <!-- <li class="part1-li">
+                        <span class="high">紧急</span>
+                        <span class="name red-name">22</span>
+                        <div class="process-box">
+                          <div class="process-content">192.168.1.111</div>
+                        </div>
+                        <span class="percent red-name">90%</span>
+                      </li> -->
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="clearfix">
+            <li class="pulll_left" style="width:25%">
+              <div class="boxall" style="height:20rem;margin-right:0.5rem">
+                <div class="navboxall" id="echart2"></div>
+              </div>
+            </li>
+            <li class="pulll_left" style="width:25%">
+              <div class="boxall" style="height:20rem;margin-right:0.5rem">
+                <div class="navboxall" id="echart3"></div>
+              </div>
+            </li>
+            <li class="pulll_left" style="width:50%">
+              <div class="boxall swiper-container" style="height:20rem">
+                <div id="chartTab">chart[切换]</div>
+                <!-- <div class="swiper-wrapper"> -->
+                  <div class="swiper-slide" id="echart4"></div>
+                  <div class="swiper-slide" id="echart5"></div>
+                <!-- </div> -->
+                <!-- 如果需要导航按钮 -->
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="clearfix">
+        <li style="width:25%">
+          <div class="boxall">
+            <div class="wrap" style="height:10.3rem">
+              <table id="table1" class="main_table">
+              </table>
+            </div>
+          </div>
+        </li>
+        <li style="width:50%">
+          <div class="boxall">
+            <div class="wrap" style="height:10.3rem">
+              <table id="table2" class="main_table">
+              </table>
+            </div>
+          </div>
+        </li>
+        <li style="width:25%">
+          <div class="boxall">
+            <div class="wrap" style="height:10.3rem">
+              <table id="table3" class="main_table">
+              </table>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
+  <script type="text/javascript" src="js/jquery.countup.min.js"></script>
+  <script>
+    $(function () {
+      setInterval(function(){ $('.counter').countUp(); }, 5000)
+      $('.wrap').liMarquee({
+        direction: 'up',//身上滚动 
+        //runshort: false,//内容不足时不滚动
+        scrollamount: 20//速度
+      });
+    });
+  </script>
+
+</body>
+
+</html>
